@@ -8,9 +8,25 @@
 // +----------------------------------------------------------------------
 namespace Tests\Test;
 
+use Tests\App\IndexController;
 use Tests\TestCase;
+use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+use ReflectionClass;
 
 class BaseTest extends TestCase
 {
+    public function testExample()
+    {
+        $this->assertTrue(true);
+    }
 
+    public function testPhalconAnnotation()
+    {
+        $cls = IndexController::class;
+        $adapter = new MemoryAdapter();
+        $reflection = $adapter->get($cls);
+        $annotations = $reflection->getPropertiesAnnotations();
+
+        var_dump($reflection);exit;
+    }
 }
